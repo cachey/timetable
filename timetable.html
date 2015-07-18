@@ -1,0 +1,119 @@
+<head>
+  <title>MED1022 timetable</title>
+</head>
+
+<body>
+  <div class="container">
+  <div class="row">
+  {{> title }}
+  {{> help }}
+  {{> options }}
+  {{> timetable }}
+  </div>
+  </div>
+</body>
+<template name="title">
+<h1>MED1022 timetable</h1>
+</template>
+<template name="help">
+</template>
+
+<template name="options">
+<label class="naturalDisplay">
+<input type="checkbox" checked="{{naturalDisplay}}" />
+Display relative times
+</label>
+<br>
+<div class="row">
+<div class="col-md-6">
+{{> activityFilter }}
+</div><div class="col-md-6">
+{{> themeFilter }}  
+</div>
+</div>
+
+<div class="row">
+<div class="col-md-6">
+{{> nameFilter }}
+</div><div class="col-md-6">
+{{> disciplineFilter }}
+</div></div>
+<br>
+</template>
+
+<template name="activityFilter">
+  <label>Show just:
+  <div class="btn-group" data-toggle="buttons">
+   <label class="btn btn-default">
+     <input type="radio" name="options" id="dLects" autocomplete="off"> Lectures 
+   </label>
+   <label class="btn btn-default">
+     <input type="radio" name="options" id="dTutes" autocomplete="off"> Tutorials
+   </label>
+   <label class="btn btn-default">
+     <input type="radio" name="options" id="dPracs" autocomplete="off"> Practicals
+   </label>
+   <label class="btn btn-default active">
+     <input type="radio" name="options" id="actx" autocomplete="off" checked> All
+   </label>
+  </div>
+  </label>
+</template>
+
+<template name="themeFilter">
+<label>Show theme:
+  <div class="btn-group" data-toggle="buttons">
+    <label class="btn btn-default">
+     <input type="radio" name="options" id="theme1" autocomplete="off"> 1
+    </label>
+   <label class="btn btn-default">
+     <input type="radio" name="options" id="theme2" autocomplete="off"> 2
+   </label>
+   <label class="btn btn-default">
+     <input type="radio" name="options" id="theme3" autocomplete="off"> 3
+   </label>
+    <label class="btn btn-default">
+      <input type="radio" name="options" id="theme4" autocomplete="off"> 4
+   </label>
+    <label class="btn btn-default active">
+      <input type="radio" name="options" id="themex" autocomplete="off" checked> All
+    </label>
+  </div>
+  </label>
+</template>
+
+<template name="nameFilter">
+<div id="description" class="input-group">
+  <span class="input-group-addon">
+    <span>Search by name:</span>
+  </span>
+    <input class="reactive-table-input form-control" type="text">
+</div>
+</template>
+
+<template name="disciplineFilter">
+<div id="discipline" class="input-group">
+  <span class="input-group-addon">
+    <span>Search by discipline or subdiscipline:</span>
+  </span>
+    <input class="reactive-table-input form-control typeahead" type="text">
+</div>
+</template>
+
+<template name="timetable">
+<div class=""> {{> reactiveTable settings=settings}} </div>
+</template>
+
+<template name="activity">
+  <tr>
+    <td>{{Activity}}</td>
+    <td>{{Theme}}</td>
+    <td>{{Num}}</td>
+    <td>{{Time}}</td>
+    <td>{{Description}}</td>
+    <td>{{Discipline}}</td>
+    <td>{{Subdiscipline}}</td>
+  </tr>
+</template>
+ 
+ 
