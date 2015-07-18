@@ -78,7 +78,7 @@ if (Meteor.isClient) {
     settings: function () {
       return {
         collection: Activities,
-        class: "table table-striped table-hover",
+        class: "table table-condensed table-responsive table-hover",
         rowsPerPage: 40,
         showRowCount: true,
         showNavigation: 'true',
