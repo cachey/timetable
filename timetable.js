@@ -8,8 +8,14 @@ if (Meteor.isClient) {
   Template.options.events({
     "change .naturalDisplay input": function (event) {
       Session.set("timeSet", event.target.checked);
-    },
-  })
+    }
+  }),
+  
+  Template.body.events({
+    "click": function (event) {
+      $("div.alert").alert('close');
+    }
+  }),
   
   Template.colorPicker.events({
     "click .btn-default": function (event, template) {
