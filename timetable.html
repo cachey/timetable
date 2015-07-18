@@ -15,7 +15,12 @@
 <template name="title">
 <h1>MED1022 timetable</h1>
 </template>
+
 <template name="help">
+<div class="alert alert-info alert-dismissible" role="alert">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  <strong>Tip:</strong> you can click the table headings below to sort the table by a specific column!
+</div>
 </template>
 
 <template name="options">
@@ -25,9 +30,12 @@ Display relative times
 </label>
 <br>
 <div class="row">
-<div class="col-md-6">
+<div class="col-md-4">
+{{> colorPicker }}
+</div>
+<div class="col-md-4">
 {{> activityFilter }}
-</div><div class="col-md-6">
+</div><div class="col-md-4">
 {{> themeFilter }}  
 </div>
 </div>
@@ -41,16 +49,32 @@ Display relative times
 <br>
 </template>
 
+<template name="colorPicker">
+  <label>Colour activities by:
+  <div class="btn-group" data-toggle="buttons">
+   <label class="btn btn-default">
+     <input type="radio" name="options" id="cAct" autocomplete="off"> Activity type
+   </label>
+   <label class="btn btn-default">
+     <input type="radio" name="options" id="cTheme" autocomplete="off"> Theme
+   </label>
+   <label class="btn btn-default active">
+     <input type="radio" name="options" id="colx" autocomplete="off" checked> Clear
+   </label>
+  </div>
+  </label>
+</template>
+
 <template name="activityFilter">
   <label>Show just:
   <div class="btn-group" data-toggle="buttons">
-   <label class="btn btn-default btn-info">
+   <label class="btn btn-default">
      <input type="radio" name="options" id="dLects" autocomplete="off"> Lectures 
    </label>
-   <label class="btn btn-default btn-success">
+   <label class="btn btn-default">
      <input type="radio" name="options" id="dTutes" autocomplete="off"> Tutorials
    </label>
-   <label class="btn btn-default btn-danger">
+   <label class="btn btn-default">
      <input type="radio" name="options" id="dPracs" autocomplete="off"> Practicals
    </label>
    <label class="btn btn-default active">
