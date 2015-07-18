@@ -63,6 +63,14 @@ if (Meteor.isClient) {
         showRowCount: true,
         showNavigation: 'true',
         showColumnToggles: false,
+        rowClass: function(item) {
+          switch (item.Activity.split("_")[0]) {
+            case 'Lecture': return 'info';
+            case 'Practical': return 'danger';
+            case 'Tutorial': return 'success';
+            default: return ''
+  }
+},
         filters: ['activity', 'theme', 'discipline', 'search'],
         fields: [
           { key: 'Activity', label: 'Activity', fn: function(val, obj) {
