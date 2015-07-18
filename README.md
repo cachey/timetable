@@ -6,6 +6,6 @@ View a current version, with MED1022 data, at [timetable.kevinshi.cf](http://tim
 ## setup
 Runs with [Meteor](http://meteor.com/)
 
-A sample database dump is provided in `db/`, to be used with `mongoimport`.
+A sample database dump is provided in `db/`, to be used with `mongorestore`.
 
 
