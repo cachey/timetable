@@ -1,0 +1,22 @@
+<template name="relativeTimesPicker">
+  <label class="naturalDisplay">
+    <input type="checkbox" checked="{{naturalDisplay}}" />
+    Display relative times
+  </label>
+</template>
+
+<template name="colorPicker">
+  <label>Colour rows by:
+  <div class="btn-group" data-toggle="buttons">
+   <label class="btn btn-default">
+     <input type="radio" name="options" id="cAct" autocomplete="off"> Activity type
+   </label>
+   <label class="btn btn-default">
+     <input type="radio" name="options" id="cTheme" autocomplete="off"> Theme
+   </label>
+   <label class="btn btn-default active">
+     <input type="radio" name="options" id="colx" autocomplete="off" checked> Clear
+   </label>
+  </div>
+  </label>
+</template>

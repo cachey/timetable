@@ -1,0 +1,61 @@
+<template name="futureOnlyPicker">
+  <label class="futureOnly">
+    <input type="checkbox" checked="{{futureOnly}}" />
+    Jump to today (hide past events)
+  </label>
+</template>
+
+<template name="activityFilter">
+  <label>Show just:
+  <div class="btn-group" data-toggle="buttons">
+   <label class="btn btn-default">
+     <input type="radio" name="options" id="dLects" autocomplete="off"> Lectures 
+   </label>
+   <label class="btn btn-default">
+     <input type="radio" name="options" id="dTutes" autocomplete="off"> Tutorials
+   </label>
+   <label class="btn btn-default">
+     <input type="radio" name="options" id="dPracs" autocomplete="off"> Practicals
+   </label>
+   <label class="btn btn-default active">
+     <input type="radio" name="options" id="actx" autocomplete="off" checked> All
+   </label>
+  </div>
+  </label>
+</template>
+
+<template name="themeFilter">
+  <label>Show theme:
+    <div class="btn-group" data-toggle="buttons">
+      <label class="btn btn-default">
+        <input type="radio" name="options" id="theme1" autocomplete="off"> 1
+      </label><label class="btn btn-default">
+        <input type="radio" name="options" id="theme2" autocomplete="off"> 2
+      </label><label class="btn btn-default">
+        <input type="radio" name="options" id="theme3" autocomplete="off"> 3
+      </label><label class="btn btn-default">
+        <input type="radio" name="options" id="theme4" autocomplete="off"> 4
+      </label><label class="btn btn-default active">
+        <input type="radio" name="options" id="themex" autocomplete="off" checked> All
+      </label>
+    </div>
+  </label>
+</template>
+
+<template name="nameFilter">
+  <div id="description" class="input-group">
+    <span class="input-group-addon">
+      <span>Search by name:</span>
+    </span>
+    <input class="reactive-table-input form-control" type="text">
+  </div>
+</template>
+
+<template name="disciplineFilter">
+  <div id="discipline" class="input-group">
+    <span class="input-group-addon">
+      <span>Search by discipline or subdiscipline:</span>
+    </span>
+    <input class="reactive-table-input form-control typeahead" type="text">
+  </div>
+</template>
