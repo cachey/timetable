@@ -2,15 +2,35 @@ var Activities = new Mongo.Collection("activities");
 if (Meteor.isClient) {
   Session.set('colorKey', '');
   // 'relative times' toggle
-  Template.options.helpers({
-    naturalDisplay: function () { return Session.get("timeSet"); },
+  Template.relativeTimesPicker.helpers({
+    naturalDisplay: function () { return Session.get("timeSet"); }
   })
-  Template.options.events({
+
+  Template.relativeTimesPicker.events({
     "change .naturalDisplay input": function (event) {
       Session.set("timeSet", event.target.checked);
     }
   }),
   
+  Template.relativeTimesPicker.helpers({
+  	futureOnly: function() { return Session.get("nowSet"); }
+  })
+  
+  Template.futureOnlyPicker.created = function() {
+  	this.filter = new ReactiveTable.Filter('future', ['Time']);
+  };
+  
+  Template.futureOnlyPicker.events({
+    "change .futureOnly input": function (event, template) {
+      Session.set("nowSet", event.target.checked);
+      if (event.target.checked) {
+      	template.filter.set({'$gte': new Date()});
+      } else {
+      	template.filter.set('');
+      }
+    }
+  }),
+   
   Template.body.events({
     "click": function (event) {
       $("div.alert").alert('close');
@@ -53,7 +73,6 @@ if (Meteor.isClient) {
   		}
   	}
   });
-  
   // name filter
   Template.nameFilter.created = function () {
     this.filter = new ReactiveTable.Filter('search', ['Description']);
@@ -103,7 +122,7 @@ if (Meteor.isClient) {
             return '';
           }
         },
-        filters: ['activity', 'theme', 'discipline', 'search'],
+        filters: ['activity', 'theme', 'discipline', 'search', 'future'],
         fields: [
           { key: 'Activity', label: 'Activity', fn: function(val, obj) {
             return val.split("_")[0];

@@ -25,10 +25,8 @@
 </template>
 
 <template name="options">
-  <label class="naturalDisplay">
-    <input type="checkbox" checked="{{naturalDisplay}}" />
-    Display relative times
-  </label>
+  {{> relativeTimesPicker}}
+  {{> futureOnlyPicker}}
   <br>
   <div class="row">
     <div class="col-md-4">
@@ -48,6 +46,20 @@
     </div>
   </div>
   <br>
+</template>
+
+<template name="relativeTimesPicker">
+  <label class="naturalDisplay">
+    <input type="checkbox" checked="{{naturalDisplay}}" />
+    Display relative times
+  </label>
+</template>
+
+<template name="futureOnlyPicker">
+  <label class="futureOnly">
+    <input type="checkbox" checked="{{futureOnly}}" />
+    Jump to today (hide past events)
+  </label>
 </template>
 
 <template name="colorPicker">
