@@ -114,9 +114,9 @@ if (Meteor.isClient) {
           }},
           { key: 'Time', label: 'Time', sortOrder: 0, sortByValue: true, fn: function(val, obj) {
              if (Session.get("timeSet")) {
-               return moment(val, "YYYY/MM/DD HH:mm:ss").from(new Date());
+               return moment(val).from(new Date());
             } else {
-             return moment(val, "YYYY/MM/DD HH:mm:ss").format("h a[,] D MMM");
+             return moment(val).format("h a[,] D MMM");
             }
           }},
           { key: 'Description', label: 'Title'},
