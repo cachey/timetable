@@ -13,12 +13,12 @@ if (Meteor.isClient) {
       return {
         collection: Activities,
         class: 'table table-condensed table-responsive table-hover',
-        rowsPerPage: 40,
+        rowsPerPage: 200,
         showRowCount: true,
         showNavigation: 'true',
         showColumnToggles: false,
         rowClass: colorFunction,
-        filters: ['activity', 'theme', 'discipline', 'search', 'future'],
+        filters: ['activity', 'theme', 'discipline', 'search', 'future', 'mst'],
         fields: [
           { key: 'Activity', label: 'Activity', fn: function(val, obj) {
             return val.split('_')[0];
