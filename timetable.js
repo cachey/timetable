@@ -1,12 +1,19 @@
-var Activities = new Mongo.Collection('activities');
-if (Meteor.isClient) {
+var subj = 2031;
+var year = 2016;
 
+var Activities = new Mongo.Collection(toString(year)+'.'+toString(subj));
+
+if (Meteor.isClient) {
+  Template.registerHelper("subjcode", function() {
+    return "MED"+toString(subj); 
+  });
+  document.title = toString(subj) + ' timetable';
   // hide the help alert displayed on startup
   Template.body.events({
     'click': function (event) {
       $('div.alert').alert('close');
     }
-  }),
+  });
 
   Template.timetable.helpers({
     settings: function () {
@@ -24,9 +31,7 @@ if (Meteor.isClient) {
             return val.split('_')[0];
           }},
           { key: 'Theme', label: 'Theme'},
-          { key: 'Num', label: 'P#', fn: function (val, obj) {
-            return ('000'+val.slice(1)).slice(-3);  
-          }},
+          { key: 'Num', label: 'P#'},
           { key: 'Time', label: 'Time', sortOrder: 0, sortByValue: true, fn: function(val, obj) {
              if (Session.get('timeSet')) {
                return moment(val).from(new Date());
