@@ -1,28 +1,46 @@
 <head>
-  <title>MED1022 timetable</title>
+  <title>Monash MBBS timetable</title>
 </head>
 
-<body>
+<template name="main">
   <div class="container">
     <div class="row">
-      {{> title }}
-      {{> help }}
-      {{> options }}
-      {{> timetable }}
+      {{> yield}}
+      <footer>
+        <hr>
+        Data accurate as of the start of Semester 1 2016.<br>
+        <small>This tool written by <a href="//kevinshi.cf">Kevin Shi</a>. <a href="www.github.com/cachey/timetable">Source on GitHub</a></small>
+      </footer>
     </div>
   </div>
-</body>
-
-<template name="title">
-  <h1>MED1022 timetable</h1>
 </template>
 
+<template name="select">
+  <h1>Monash MBBS timetable <small> Semesters 1 and 2, 2016</small></h1>
+  Select unit to view:
+  {{#each unit}}
+    <br><br>
+    <a href="view/{{number}}" class="btn btn-{{class}} btn-lg">MED{{number}}</a>
+  {{/each}}
+   <br><br>
+   <a href="view/all" class="btn btn-lg btn-default">See everything (for VIA revision)</a>
+</template>
+
+<template name="display">
+  <a href="/">&larr; Go back</a>
+  <h1>MED{{number}} timetable</h1>
+  {{> options}}
+  {{> reactiveTable settings=settings}}
+</template>
+
+<!--
 <template name="help">
   <div class="alert alert-info alert-dismissible fade in" role="alert">
     <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
     <strong>Tip:</strong> click the table headings below to sort the table by a specific column! <i>(click anywhere to hide this box)</i>
   </div>
 </template>
+-->
 
 <template name="options">
   {{> relativeTimesPicker}}
@@ -49,6 +67,3 @@
   <br>
 </template>
 
-<template name="timetable">
-  <div class=""> {{> reactiveTable settings=settings}} </div>
-</template>

@@ -6,9 +6,18 @@
 </template>
 
 <template name="mstPicker">
-  <label class="mstOnly">
-    <input type="checkbox" checked="{{mstOnly}}" />
-    Show weeks 7-12 (85-90% EOS assessment) only
+  <label>Show just:
+  <div class="btn-group" data-toggle="buttons">
+   <label class="btn btn-default">
+     <input type="radio" name="options" id="dFront" autocomplete="off">MST
+   </label>
+   <label class="btn btn-default">
+     <input type="radio" name="options" id="dBack" autocomplete="off">EOS
+   </label>
+   <label class="btn btn-default active">
+     <input type="radio" name="options" id="timex" autocomplete="off" checked>All 
+   </label>
+  </div>
   </label>
 </template>
 
@@ -16,16 +25,16 @@
   <label>Show just:
   <div class="btn-group" data-toggle="buttons">
    <label class="btn btn-default">
-     <input type="radio" name="options" id="dLects" autocomplete="off"> Lectures 
+     <input type="radio" name="options" id="dLects" autocomplete="off">Lectures 
    </label>
    <label class="btn btn-default">
-     <input type="radio" name="options" id="dTutes" autocomplete="off"> Tutorials
+     <input type="radio" name="options" id="dTutes" autocomplete="off">Tutorials
    </label>
    <label class="btn btn-default">
-     <input type="radio" name="options" id="dPracs" autocomplete="off"> Practicals
+     <input type="radio" name="options" id="dPracs" autocomplete="off">Practicals
    </label>
    <label class="btn btn-default active">
-     <input type="radio" name="options" id="actx" autocomplete="off" checked> All
+     <input type="radio" name="options" id="actx" autocomplete="off" checked>All
    </label>
   </div>
   </label>
@@ -35,15 +44,15 @@
   <label>Show theme:
     <div class="btn-group" data-toggle="buttons">
       <label class="btn btn-default">
-        <input type="radio" name="options" id="theme1" autocomplete="off"> 1
+        <input type="radio" name="options" id="theme1" autocomplete="off">1
       </label><label class="btn btn-default">
-        <input type="radio" name="options" id="theme2" autocomplete="off"> 2
+        <input type="radio" name="options" id="theme2" autocomplete="off">2
       </label><label class="btn btn-default">
-        <input type="radio" name="options" id="theme3" autocomplete="off"> 3
+        <input type="radio" name="options" id="theme3" autocomplete="off">3
       </label><label class="btn btn-default">
-        <input type="radio" name="options" id="theme4" autocomplete="off"> 4
+        <input type="radio" name="options" id="theme4" autocomplete="off">4
       </label><label class="btn btn-default active">
-        <input type="radio" name="options" id="themex" autocomplete="off" checked> All
+        <input type="radio" name="options" id="themex" autocomplete="off" checked>All
       </label>
     </div>
   </label>

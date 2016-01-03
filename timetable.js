@@ -1,44 +1,72 @@
-var Activities = new Mongo.Collection('activities');
+var Units = new Meteor.Collection('units');
+var Activities = new Meteor.Collection('activities');
+
+
+Router.configure({
+  layoutTemplate: 'main'
+});
+
+Router.route('/', {
+  template: 'select'
+});
+
+Router.route('/view/:unit', {
+  template: 'display',
+  data: function() {
+    Session.set('unit', parseInt(this.params.unit));
+    var unitInfo = Units.findOne({number: parseInt(this.params.unit)});
+    Session.set('halfway', unitInfo.halfway);
+    console.log(unitInfo.halfway);
+    return unitInfo;
+  }
+});
+
 if (Meteor.isClient) {
-
-  // hide the help alert displayed on startup
-  Template.body.events({
-    'click': function (event) {
-      $('div.alert').alert('close');
+  Template.select.helpers({
+    'unit': function() {
+      return Units.find();
     }
-  }),
+  });
 
-  Template.timetable.helpers({
+  Template.display.helpers({
     settings: function () {
       return {
-        collection: Activities,
+        collection: Activities.find(Session.get('unit') ? {Unit: Session.get('unit')} : {}),
         class: 'table table-condensed table-responsive table-hover',
         rowsPerPage: 200,
         showRowCount: true,
         showNavigation: 'true',
-        showColumnToggles: false,
         rowClass: colorFunction,
         filters: ['activity', 'theme', 'discipline', 'search', 'future', 'mst'],
         fields: [
-          { key: 'Activity', label: 'Activity', fn: function(val, obj) {
-            return val.split('_')[0];
-          }},
+          { key: 'Unit', label: 'Unit', sortOrder: (Session.get('unit') ? 1 : 0), hidden: function() {return Session.get('unit')}},
+          { key: 'Activity', label: 'Activity', fn: function(val, obj) { return val.split(' ')[0]}},
           { key: 'Theme', label: 'Theme'},
-          { key: 'Num', label: 'P#', fn: function (val, obj) {
-            return ('000'+val.slice(1)).slice(-3);  
-          }},
-          { key: 'Time', label: 'Time', sortOrder: 0, sortByValue: true, fn: function(val, obj) {
+          { key: 'Series', label: 'P#'},
+          { key: 'Date', label: 'Date', sortOrder: (Session.get('unit') ? 0 : 1), sortByValue: true, fn: function(val, obj) {
              if (Session.get('timeSet')) {
                return moment(val).from(new Date());
             } else {
-             return moment(val).format('h a[,] D MMM');
+             return moment(val).format('h\u00a0a[,]\u00a0D\u00a0MMM');
             }
           }},
-          { key: 'Description', label: 'Title'},
+          { key: 'Title', label: 'Title'},
           { key: 'Discipline', label: 'Discipline'},
           { key: 'Subdiscipline', label: 'Subdiscpline'}
+          
         ]
       };
     }
+  });
+}
+
+if (Meteor.isServer) {
+  Meteor.startup(function () {
+  /* Test data
+  Units.insert({number: 1011, class:'primary'});
+  Units.insert({number: 1022, class:'info'});
+  Units.insert({number: 2031, class:'success'});
+  Units.insert({number: 2042, class:'warning'});
+  */
   });
 }
