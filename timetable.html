@@ -4,74 +4,44 @@
 
 <template name="main">
   <div class="container-fluid">
-    <div class="row">
-      {{> yield}}
-      <footer>
-        <hr>
-        Data accurate as of the start of Semester 1 2016.<br>
-        <small>This tool written by <a href="//kevinshi.cf">Kevin Shi</a>. <a href="www.github.com/cachey/timetable">Source on GitHub</a></small>
-      </footer>
-    </div>
+    {{> yield}}
+    <footer>
+    <hr>
+    Data accurate as of the start of Semester 1 2016.<br>
+    <small>This tool written by <a href="//kevinshi.cf">Kevin Shi</a>.
+    <a href="www.github.com/cachey/timetable">Source on GitHub</a></small>
+    </footer>
   </div>
 </template>
 
 <template name="select">
-  <h1>Monash MBBS timetable <small> Clayton semesters 1 and 2, 2016</small></h1>
-  {{> usageTip}}
+  <h1>Monash MBBS timetable <small>Clayton semesters 1 and 2, 2016</small></h1>
+  <div class="alert alert-info fade in" role="alert">
+    <strong>Hi there!</strong> {{randomTip}}
+  </div>
   <h4>Select unit to view:</h4>
   {{#each unit}}
-    <a href="view/{{number}}" class="btn btn-{{class}} btn-lg">MED{{number}}</a>
+    <a class="btn btn-{{class}} btn-lg" href="view/{{number}}">MED{{number}}</a>
   {{/each}}
-   <a href="view/all" class="btn btn-lg btn-default">See everything (for VIA revision)</a>
-</template>
-
-<template name="usageTip">
-  <div class="alert alert-info alert-dismissible fade in" role="alert">
-    <strong>Hi there!</strong> {{randomTip}}
-   </div>
+  <a class="btn btn-lg btn-default" href="view/all">See everything (for VIA revision)</a>
 </template>
 
 <template name="display">
-  <a href="/" class="btn btn-default">&larr; Go back</a>
+  <a class="btn btn-default" href="/">&larr; Go back</a>
   <h1>MED{{number}} timetable</h1>
-  {{> options}}
+  {{> relativeTimesPicker}}
+  {{> futureOnlyPicker}}
+  <div class="row">
+    <div class="col-lg-6">{{> mstPicker}}</div>
+    <div class="col-lg-6">{{> colorPicker}}</div>
+  </div>
+  <div class="row">
+    <div class="col-lg-6">{{> activityFilter}}</div>
+    <div class="col-lg-6">{{> themeFilter}}</div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">{{> nameFilter}}</div>
+    <div class="col-md-6">{{> disciplineFilter}}</div>
+  </div><br>
   {{> reactiveTable settings=settings}}
 </template>
-
-<!--
-<template name="help">
-  <div class="alert alert-info alert-dismissible fade in" role="alert">
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-    <strong>Tip:</strong> click the table headings below to sort the table by a specific column! <i>(click anywhere to hide this box)</i>
-  </div>
-</template>
--->
-
-<template name="options">
-    {{> relativeTimesPicker}}
-    {{> futureOnlyPicker}}
-  <br>
-  <div class="row">
-    <div class="col-lg-6">
-      {{> mstPicker}}
-    </div><div class="col-lg-6">
-      {{> colorPicker }}
-    </div>
-  </div><div class="row">
-    <div class="col-lg-6">
-      {{> activityFilter }}
-    </div><div class="col-lg-6">
-      {{> themeFilter }}  
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-md-6">
-      {{> nameFilter }}
-    </div><div class="col-md-6">
-      {{> disciplineFilter }}
-    </div>
-  </div>
-  <br>
-</template>
-
