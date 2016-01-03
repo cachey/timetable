@@ -16,18 +16,23 @@
 </template>
 
 <template name="select">
-  <h1>Monash MBBS timetable <small> Semesters 1 and 2, 2016</small></h1>
-  Select unit to view:
+  <h1>Monash MBBS timetable <small> Clayton semesters 1 and 2, 2016</small></h1>
+  {{> usageTip}}
+  <h4>Select unit to view:</h4>
   {{#each unit}}
-    <br><br>
     <a href="view/{{number}}" class="btn btn-{{class}} btn-lg">MED{{number}}</a>
   {{/each}}
-   <br><br>
    <a href="view/all" class="btn btn-lg btn-default">See everything (for VIA revision)</a>
 </template>
 
+<template name="usageTip">
+  <div class="alert alert-info alert-dismissible fade in" role="alert">
+    <strong>Hi there!</strong> {{randomTip}}
+   </div>
+</template>
+
 <template name="display">
-  <a href="/">&larr; Go back</a>
+  <a href="/" class="btn btn-default">&larr; Go back</a>
   <h1>MED{{number}} timetable</h1>
   {{> options}}
   {{> reactiveTable settings=settings}}
@@ -43,16 +48,19 @@
 -->
 
 <template name="options">
-  {{> relativeTimesPicker}}
-  {{> futureOnlyPicker}}
-  {{> mstPicker}}
+    {{> relativeTimesPicker}}
+    {{> futureOnlyPicker}}
   <br>
   <div class="row">
-    <div class="col-md-4">
+    <div class="col-lg-6">
+      {{> mstPicker}}
+    </div><div class="col-lg-6">
       {{> colorPicker }}
-    </div><div class="col-md-4">
+    </div>
+  </div><div class="row">
+    <div class="col-lg-6">
       {{> activityFilter }}
-    </div><div class="col-md-4">
+    </div><div class="col-lg-6">
       {{> themeFilter }}  
     </div>
   </div>

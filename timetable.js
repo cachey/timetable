@@ -58,6 +58,12 @@ if (Meteor.isClient) {
       };
     }
   });
+  Template.usageTip.helpers({
+    randomTip: function() {
+       tips = ["This box is meant to show a random tip or message but I haven't written any yet."];
+       return tips[Math.floor((Math.random() * tips.length))];
+    }
+  });
 }
 
 if (Meteor.isServer) {
