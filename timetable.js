@@ -33,9 +33,9 @@ if (Meteor.isClient) {
       return {
         collection: Activities.find(Session.get('unit') ? {Unit: Session.get('unit')} : {}),
         class: 'table table-condensed table-responsive table-hover',
-        rowsPerPage: 200,
-        showRowCount: true,
-        showNavigation: 'true',
+        rowsPerPage: 600,
+        showRowCount: false,
+        showNavigation: 'never',
         rowClass: colorFunction,
         filters: ['activity', 'theme', 'discipline', 'search', 'future', 'mst'],
         fields: [
