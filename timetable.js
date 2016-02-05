@@ -29,7 +29,9 @@ if (Meteor.isClient) {
     },
     randomTip: function() {
       tips = [
-        "This box is meant to show a random tip or message but I haven't written any yet."
+        "You can assemble a list using this tool and print it straight from your browser.",
+        "You can book rooms in 27 Rainforest Walk by emailing medicine.timetable@monash.edu",
+        "Year 2 Community Engagement applications are due in by the end of March"
       ];
       return tips[Math.floor((Math.random() * tips.length))];
     }

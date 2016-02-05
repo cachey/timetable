@@ -1,7 +1,7 @@
 # timetable
 Timetable data visualiser for Monash Medicine courses
 
-View a current version, with MED1022 data, at [timetable.kevinshi.cf](http://timetable.kevinshi.cf).
+View a current version, with all 2016 data, at [timetable.kevinshi.cf](http://timetable.kevinshi.cf).
 
 ## setup
 Runs with [Meteor](http://meteor.com/)
